@@ -6,50 +6,49 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Rund um den Potsdamer Platz</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --bg: #14171c;
-    --bg-elev: #1d2129;
-    --card: #232833;
-    --line: #333a47;
-    --text: #ece7dc;
-    --text-dim: #9aa1ad;
-    --amber: #e7a13d;
-    --teal: #5aa89b;
+    --bg: #FAF6F1;
+    --bg-elev: #FFFFFF;
+    --card: #FFFFFF;
+    --line: #EAE0D6;
+    --text: #2B2420;
+    --text-dim: #7A6F63;
+    --red: #CD0822;
+    --red-dark: #A30619;
+    --peach: #F3DCC9;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background: var(--bg);
     color: var(--text);
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Nunito Sans', 'Work Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     padding-bottom: 60px;
   }
   .hero{
-    padding: 48px 24px 32px;
-    background:
-      radial-gradient(circle at 85% -10%, rgba(231,161,61,0.18), transparent 55%),
-      radial-gradient(circle at 10% 110%, rgba(90,168,155,0.14), transparent 55%),
-      var(--bg-elev);
-    border-bottom: 1px solid var(--line);
+    padding: 44px 24px 30px;
+    background: var(--bg-elev);
+    border-bottom: 3px solid var(--red);
   }
   .eyebrow{
     font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--amber);
-    font-weight: 600;
+    color: var(--red);
+    font-weight: 800;
     margin-bottom: 10px;
   }
   h1{
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 34px;
-    line-height: 1.12;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.15;
     margin: 0 0 12px;
-    max-width: 320px;
+    max-width: 340px;
+    color: var(--text);
   }
   .sub{
     color: var(--text-dim);
@@ -65,28 +64,28 @@
     display: flex;
     gap: 8px;
     padding: 14px 24px;
-    background: rgba(20,23,28,0.92);
+    background: rgba(250,246,241,0.95);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
     overflow-x: auto;
   }
   .filter-btn{
     flex: 0 0 auto;
-    background: transparent;
-    border: 1px solid var(--line);
+    background: #FFFFFF;
+    border: 1.5px solid var(--line);
     color: var(--text-dim);
     padding: 8px 14px;
     border-radius: 100px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.15s ease;
   }
   .filter-btn.active{
-    background: var(--amber);
-    color: #1a1508;
-    border-color: var(--amber);
+    background: var(--red);
+    color: #FFFFFF;
+    border-color: var(--red);
   }
   main{ padding: 8px 24px 0; }
   section{ margin-top: 34px; }
@@ -97,33 +96,36 @@
     margin-bottom: 14px;
   }
   .section-num{
-    font-family: 'Fraunces', serif;
-    color: var(--teal);
+    font-family: 'Poppins', sans-serif;
+    color: var(--red);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 800;
   }
   .section-title{
-    font-family: 'Fraunces', serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0;
+    color: var(--text);
   }
   .card{
     display: block;
     background: var(--card);
-    border: 1px solid var(--line);
+    border: 1.5px solid var(--line);
     border-radius: 14px;
     padding: 16px 18px;
     margin-bottom: 10px;
     text-decoration: none;
     color: inherit;
-    transition: border-color 0.15s ease, transform 0.1s ease;
+    box-shadow: 0 1px 2px rgba(43,36,32,0.04);
+    transition: border-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
   }
   .card:active{
     transform: scale(0.98);
   }
   .card:hover{
-    border-color: var(--teal);
+    border-color: var(--red);
+    box-shadow: 0 4px 14px rgba(205,8,34,0.10);
   }
   .card-link-hint{
     margin-top: 10px;
@@ -131,8 +133,8 @@
     align-items: center;
     gap: 6px;
     font-size: 12px;
-    font-weight: 600;
-    color: var(--teal);
+    font-weight: 700;
+    color: var(--red-dark);
   }
   .card-top{
     display: flex;
@@ -141,9 +143,10 @@
     gap: 10px;
   }
   .card-name{
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
     margin: 0 0 4px;
+    color: var(--text);
   }
   .card-addr{
     color: var(--text-dim);
@@ -153,18 +156,18 @@
   .dist-badge{
     flex-shrink: 0;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 4px 9px;
     border-radius: 100px;
     white-space: nowrap;
   }
-  .dist-near{ background: rgba(90,168,155,0.18); color: var(--teal); }
-  .dist-far{ background: rgba(231,161,61,0.18); color: var(--amber); }
+  .dist-near{ background: var(--peach); color: var(--red-dark); }
+  .dist-far{ background: #F2EDE6; color: var(--text-dim); }
   .card-note{
     margin-top: 8px;
     font-size: 13.5px;
     line-height: 1.45;
-    color: #c9c4b8;
+    color: #5A5048;
   }
   .hidden{ display: none !important; }
   footer{
@@ -177,7 +180,7 @@
 </head>
 <body>
 <div class="hero">
-<div class="eyebrow">Hotel-Guide · Potsdamer Platz</div>
+<div class="eyebrow">Scandic Berlin Potsdamer Platz</div>
 <h1>Rund um den Platz</h1>
 <p class="sub">Ausgewählte Bars, Restaurants, Cafés und Ausgehtipps in Gehdistanz oder kurzer Fahrt.</p>
 </div>
