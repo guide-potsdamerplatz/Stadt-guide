@@ -20,6 +20,7 @@
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
+  html{ scroll-behavior: smooth; }
   body{
     background: var(--bg);
     color: var(--text);
@@ -115,23 +116,156 @@
     border-color: var(--red);
   }
   .lang-btn{
+    position: relative;
+    overflow: hidden;
     flex: 0 0 auto;
-    background: #FFFFFF;
-    border: 1.5px solid var(--red);
-    color: var(--red-dark);
-    padding: 6px 12px;
-    border-radius: 100px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
+    width: 46px;
+    height: 34px;
+    border: 1.5px solid rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+  }
+  .lang-btn .code{
+    position: relative;
+    z-index: 2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #1c1c1c;
+    background: rgba(255,255,255,0.9);
+    padding: 1px 5px;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
   }
   .lang-btn.active{
+    border-color: var(--red);
+    box-shadow: 0 0 0 2px var(--red);
+  }
+  /* Flag-colour backgrounds */
+  .flag-de{ background: linear-gradient(180deg,#000 0 33.33%,#D00 33.33% 66.66%,#FFCE00 66.66% 100%); }
+  .flag-en{ background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2030%27%3E%3CclipPath%20id%3D%27s%27%3E%3Cpath%20d%3D%27M0%2C0%20v30%20h60%20v-30%20z%27/%3E%3C/clipPath%3E%3CclipPath%20id%3D%27t%27%3E%3Cpath%20d%3D%27M30%2C15%20h30%20v15%20z%20v15%20h-30%20z%20h-30%20v-15%20z%20v-15%20h30%20z%27/%3E%3C/clipPath%3E%3Cg%20clip-path%3D%27url%28%23s%29%27%3E%3Cpath%20d%3D%27M0%2C0%20v30%20h60%20v-30%20z%27%20fill%3D%27%23012169%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C30%20M60%2C0%20L0%2C30%27%20stroke%3D%27%23fff%27%20stroke-width%3D%276%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C30%20M60%2C0%20L0%2C30%27%20clip-path%3D%27url%28%23t%29%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%274%27/%3E%3Cpath%20d%3D%27M30%2C0%20v30%20M0%2C15%20h60%27%20stroke%3D%27%23fff%27%20stroke-width%3D%2710%27/%3E%3Cpath%20d%3D%27M30%2C0%20v30%20M0%2C15%20h60%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%276%27/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat; }
+  .flag-es{ background: linear-gradient(180deg,#AA151B 0 25%,#F1BF00 25% 75%,#AA151B 75% 100%); }
+  .flag-sv{
+    background:
+      linear-gradient(#FECC00,#FECC00) center/100% 28% no-repeat,
+      linear-gradient(#FECC00,#FECC00) 32% 0/22% 100% no-repeat,
+      #006AA7;
+  }
+  .flag-no{ background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2022%2016%27%3E%3Crect%20width%3D%2722%27%20height%3D%2716%27%20fill%3D%27%23BA0C2F%27/%3E%3Crect%20x%3D%276%27%20width%3D%274%27%20height%3D%2716%27%20fill%3D%27%23fff%27/%3E%3Crect%20y%3D%276%27%20width%3D%2722%27%20height%3D%274%27%20fill%3D%27%23fff%27/%3E%3Crect%20x%3D%277%27%20width%3D%272%27%20height%3D%2716%27%20fill%3D%27%2300205B%27/%3E%3Crect%20y%3D%277%27%20width%3D%2722%27%20height%3D%272%27%20fill%3D%27%2300205B%27/%3E%3C/svg%3E") center/100% 100% no-repeat; }
+  .flag-fi{
+    background:
+      linear-gradient(#003580,#003580) center/100% 30% no-repeat,
+      linear-gradient(#003580,#003580) 34% 0/26% 100% no-repeat,
+      #FFFFFF;
+  }
+  .flag-pl{ background: linear-gradient(180deg,#FFFFFF 0 50%,#DC143C 50% 100%); }
+  .flag-ru{ background: linear-gradient(180deg,#FFFFFF 0 33.33%,#0039A6 33.33% 66.66%,#D52B1E 66.66% 100%); }
+  .flag-ar{ background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20300%20200%27%3E%3Crect%20width%3D%27300%27%20height%3D%27200%27%20fill%3D%27%23fff%27/%3E%3Crect%20width%3D%27300%27%20height%3D%2750%27%20fill%3D%27%23ED1C24%27/%3E%3Crect%20y%3D%27150%27%20width%3D%27300%27%20height%3D%2750%27%20fill%3D%27%23ED1C24%27/%3E%3Cpath%20fill%3D%27%2300A651%27%20d%3D%27M150%2064%20L134%2092%20L144%2092%20L124%20114%20L140%20114%20L110%20138%20L190%20138%20L160%20114%20L176%20114%20L156%2092%20L166%2092%20Z%27/%3E%3Crect%20x%3D%27145%27%20y%3D%27138%27%20width%3D%2710%27%20height%3D%2712%27%20fill%3D%27%2300A651%27/%3E%3C/svg%3E") center/100% 100% no-repeat; }
+
+  /* Hamburger toggle (in-flow, above first chapter) */
+  .menu-row{ padding-bottom: 2px; }
+  .menu-toggle{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
     background: var(--red);
     color: #FFFFFF;
+    border-radius: 100px;
+    padding: 9px 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(205,8,34,0.25);
   }
+  .menu-toggle .bars{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 20px;
+  }
+  .menu-toggle .bars b{
+    display: block;
+    height: 2.5px;
+    border-radius: 2px;
+    background: #FFFFFF;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .menu-toggle.open .bars b:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+  .menu-toggle.open .bars b:nth-child(2){ opacity: 0; }
+  .menu-toggle.open .bars b:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+  .menu-label{
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .drawer-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(20,15,12,0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 55;
+  }
+  .drawer-overlay.open{ opacity: 1; visibility: visible; }
+
+  .drawer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 78%;
+    max-width: 320px;
+    background: var(--bg-elev);
+    box-shadow: 8px 0 26px rgba(0,0,0,0.18);
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    z-index: 58;
+    padding: 76px 0 24px;
+    overflow-y: auto;
+  }
+  .drawer.open{ transform: translateX(0); }
+  .drawer-head{
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    padding: 0 24px 14px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 8px;
+  }
+  .drawer-nav{ display: flex; flex-direction: column; }
+  .drawer-link{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .drawer-link:hover{ background: var(--peach); }
+  .drawer-num{
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--red);
+    min-width: 22px;
+  }
+
   main{ padding: 8px 24px 0; }
-  section{ margin-top: 34px; }
+  section{ margin-top: 34px; scroll-margin-top: 165px; }
   .section-head{
     display: flex;
     align-items: baseline;
@@ -237,16 +371,17 @@
 </div>
 
 <div class="filters">
-  <div class="filter-row">
-    <button class="lang-btn active" data-lang="de">DE</button>
-    <button class="lang-btn" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="es">ES</button>
-    <button class="lang-btn" data-lang="sv">SE</button>
-    <button class="lang-btn" data-lang="no">NO</button>
-    <button class="lang-btn" data-lang="fi">FI</button>
-    <button class="lang-btn" data-lang="pl">PL</button>
-    <button class="lang-btn" data-lang="ru">RU</button>
-    <button class="lang-btn" data-lang="ar">AR</button>
+  <div class="filter-row menu-row"><button class="menu-toggle" id="menuToggle" aria-label="Menu"><span class="bars" aria-hidden="true"><b></b><b></b><b></b></span><span class="menu-label"><span lang="de">Menü</span><span lang="en">Menu</span><span lang="es">Menú</span><span lang="sv">Meny</span><span lang="no">Meny</span><span lang="fi">Valikko</span><span lang="pl">Menu</span><span lang="ru">Меню</span><span lang="ar">القائمة</span></span></button></div>
+  <div class="filter-row lang-row">
+    <button class="lang-btn flag-de active" data-lang="de" aria-label="Deutsch"></button>
+    <button class="lang-btn flag-en" data-lang="en" aria-label="English"></button>
+    <button class="lang-btn flag-es" data-lang="es" aria-label="Español"></button>
+    <button class="lang-btn flag-sv" data-lang="sv" aria-label="Svenska"></button>
+    <button class="lang-btn flag-no" data-lang="no" aria-label="Norsk"></button>
+    <button class="lang-btn flag-fi" data-lang="fi" aria-label="Suomi"></button>
+    <button class="lang-btn flag-pl" data-lang="pl" aria-label="Polski"></button>
+    <button class="lang-btn flag-ru" data-lang="ru" aria-label="Русский"></button>
+    <button class="lang-btn flag-ar" data-lang="ar" aria-label="العربية"></button>
   </div>
   <div class="filter-row">
     <button class="filter-btn active" data-filter="all"><span lang="de">Alle</span><span lang="en">All</span><span lang="es">Todos</span><span lang="sv">Alla</span><span lang="no">Alle</span><span lang="fi">Kaikki</span><span lang="pl">Wszystkie</span><span lang="ru">Все</span><span lang="ar">الكل</span></button>
@@ -255,9 +390,23 @@
   </div>
 </div>
 
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head"><span lang="de">Menü</span><span lang="en">Menu</span><span lang="es">Menú</span><span lang="sv">Meny</span><span lang="no">Meny</span><span lang="fi">Valikko</span><span lang="pl">Menu</span><span lang="ru">Меню</span><span lang="ar">القائمة</span></div>
+  <nav class="drawer-nav">
+      <a class="drawer-link" href="#section-1"><span class="drawer-num">01</span><span lang="de">Cafés</span><span lang="en">Cafés</span><span lang="es">Cafés</span><span lang="sv">Kaféer</span><span lang="no">Kafeer</span><span lang="fi">Kahvilat</span><span lang="pl">Kawiarnie</span><span lang="ru">Кафе</span><span lang="ar">المقاهي</span></a>
+      <a class="drawer-link" href="#section-2"><span class="drawer-num">02</span><span lang="de">Restaurants</span><span lang="en">Restaurants</span><span lang="es">Restaurantes</span><span lang="sv">Restauranger</span><span lang="no">Restauranter</span><span lang="fi">Ravintolat</span><span lang="pl">Restauracje</span><span lang="ru">Рестораны</span><span lang="ar">المطاعم</span></a>
+      <a class="drawer-link" href="#section-3"><span class="drawer-num">03</span><span lang="de">Bars</span><span lang="en">Bars</span><span lang="es">Bares</span><span lang="sv">Barer</span><span lang="no">Barer</span><span lang="fi">Baarit</span><span lang="pl">Bary</span><span lang="ru">Бары</span><span lang="ar">الحانات</span></a>
+      <a class="drawer-link" href="#section-4"><span class="drawer-num">04</span><span lang="de">Ausgehmöglichkeiten</span><span lang="en">Nightlife & Entertainment</span><span lang="es">Ocio nocturno</span><span lang="sv">Nöjesliv</span><span lang="no">Uteliv</span><span lang="fi">Yöelämä</span><span lang="pl">Życie nocne</span><span lang="ru">Ночная жизнь</span><span lang="ar">الحياة الليلية</span></a>
+      <a class="drawer-link" href="#section-5"><span class="drawer-num">05</span><span lang="de">Familienaktivitäten</span><span lang="en">Family Activities</span><span lang="es">Actividades familiares</span><span lang="sv">Familjeaktiviteter</span><span lang="no">Familieaktiviteter</span><span lang="fi">Perheaktiviteetit</span><span lang="pl">Atrakcje dla rodzin</span><span lang="ru">Семейный отдых</span><span lang="ar">أنشطة عائلية</span></a>
+      <a class="drawer-link" href="#section-6"><span class="drawer-num">06</span><span lang="de">Barrierefreie Sehenswürdigkeiten</span><span lang="en">Accessible Sights</span><span lang="es">Lugares de interés accesibles</span><span lang="sv">Tillgängliga sevärdheter</span><span lang="no">Tilgjengelige severdigheter</span><span lang="fi">Esteettömät nähtävyydet</span><span lang="pl">Dostępne atrakcje</span><span lang="ru">Доступные достопримечательности</span><span lang="ar">معالم يسهل الوصول إليها</span></a>
+      <a class="drawer-link" href="#section-7"><span class="drawer-num">07</span><span lang="de">Bootstouren</span><span lang="en">Boat Tours</span><span lang="es">Cruceros</span><span lang="sv">Båtturer</span><span lang="no">Båtturer</span><span lang="fi">Veneretket</span><span lang="pl">Rejsy statkiem</span><span lang="ru">Прогулки на катере</span><span lang="ar">جولات بالقارب</span></a>
+  </nav>
+</aside>
+
 <main>
 
-  <section>
+  <section id="section-1">
     <div class="section-head">
       <span class="section-num">01</span>
       <h2 class="section-title"><span lang="de">Cafés</span><span lang="en">Cafés</span><span lang="es">Cafés</span><span lang="sv">Kaféer</span><span lang="no">Kafeer</span><span lang="fi">Kahvilat</span><span lang="pl">Kawiarnie</span><span lang="ru">Кафе</span><span lang="ar">المقاهي</span></h2>
@@ -328,7 +477,7 @@
     </a>
   </section>
 
-  <section>
+  <section id="section-2">
     <div class="section-head">
       <span class="section-num">02</span>
       <h2 class="section-title"><span lang="de">Restaurants</span><span lang="en">Restaurants</span><span lang="es">Restaurantes</span><span lang="sv">Restauranger</span><span lang="no">Restauranter</span><span lang="fi">Ravintolat</span><span lang="pl">Restauracje</span><span lang="ru">Рестораны</span><span lang="ar">المطاعم</span></h2>
@@ -399,7 +548,7 @@
     </a>
   </section>
 
-  <section>
+  <section id="section-3">
     <div class="section-head">
       <span class="section-num">03</span>
       <h2 class="section-title"><span lang="de">Bars</span><span lang="en">Bars</span><span lang="es">Bares</span><span lang="sv">Barer</span><span lang="no">Barer</span><span lang="fi">Baarit</span><span lang="pl">Bary</span><span lang="ru">Бары</span><span lang="ar">الحانات</span></h2>
@@ -470,7 +619,7 @@
     </a>
   </section>
 
-  <section>
+  <section id="section-4">
     <div class="section-head">
       <span class="section-num">04</span>
       <h2 class="section-title"><span lang="de">Ausgehmöglichkeiten</span><span lang="en">Nightlife & Entertainment</span><span lang="es">Ocio nocturno</span><span lang="sv">Nöjesliv</span><span lang="no">Uteliv</span><span lang="fi">Yöelämä</span><span lang="pl">Życie nocne</span><span lang="ru">Ночная жизнь</span><span lang="ar">الحياة الليلية</span></h2>
@@ -541,7 +690,7 @@
     </a>
   </section>
 
-  <section>
+  <section id="section-5">
     <div class="section-head">
       <span class="section-num">05</span>
       <h2 class="section-title"><span lang="de">Familienaktivitäten</span><span lang="en">Family Activities</span><span lang="es">Actividades familiares</span><span lang="sv">Familjeaktiviteter</span><span lang="no">Familieaktiviteter</span><span lang="fi">Perheaktiviteetit</span><span lang="pl">Atrakcje dla rodzin</span><span lang="ru">Семейный отдых</span><span lang="ar">أنشطة عائلية</span></h2>
@@ -644,7 +793,7 @@
     </a>
   </section>
 
-  <section>
+  <section id="section-6">
     <div class="section-head">
       <span class="section-num">06</span>
       <h2 class="section-title"><span lang="de">Barrierefreie Sehenswürdigkeiten</span><span lang="en">Accessible Sights</span><span lang="es">Lugares de interés accesibles</span><span lang="sv">Tillgängliga sevärdheter</span><span lang="no">Tilgjengelige severdigheter</span><span lang="fi">Esteettömät nähtävyydet</span><span lang="pl">Dostępne atrakcje</span><span lang="ru">Доступные достопримечательности</span><span lang="ar">معالم يسهل الوصول إليها</span></h2>
@@ -731,7 +880,7 @@
     </a>
   </section>
 
-  <section>
+  <section id="section-7">
     <div class="section-head">
       <span class="section-num">07</span>
       <h2 class="section-title"><span lang="de">Bootstouren</span><span lang="en">Boat Tours</span><span lang="es">Cruceros</span><span lang="sv">Båtturer</span><span lang="no">Båtturer</span><span lang="fi">Veneretket</span><span lang="pl">Rejsy statkiem</span><span lang="ru">Прогулки на катере</span><span lang="ar">جولات بالقارب</span></h2>
@@ -798,6 +947,27 @@
       document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     });
   });
+
+  // Side drawer (hamburger) menu
+  const menuToggle = document.getElementById('menuToggle');
+  const drawer = document.getElementById('drawer');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+    menuToggle.classList.remove('open');
+  }
+  function toggleDrawer(){
+    if(drawer.classList.contains('open')){ closeDrawer(); }
+    else {
+      drawer.classList.add('open');
+      drawerOverlay.classList.add('open');
+      menuToggle.classList.add('open');
+    }
+  }
+  menuToggle.addEventListener('click', toggleDrawer);
+  drawerOverlay.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.drawer-link').forEach(a => a.addEventListener('click', closeDrawer));
 </script>
 
 </body>
