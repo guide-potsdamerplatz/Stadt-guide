@@ -140,8 +140,8 @@
     max-width: 165px;
   }
   .lang-flag{
-    width: 24px; height: 17px; border-radius: 3px; flex: 0 0 auto;
-    border: 1px solid rgba(0,0,0,0.12);
+    width: 27px; height: 18px; border-radius: 3px; flex: 0 0 auto;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.22);
   }
   .lang-name{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .caret{
@@ -185,9 +185,110 @@
   .lang-btn:hover{ background: var(--peach); }
   .lang-btn.active{ background: var(--peach); color: var(--red-dark); font-weight: 800; }
   .lang-swatch{
-    width: 22px; height: 15px; border-radius: 3px; flex: 0 0 auto;
-    border: 1px solid rgba(0,0,0,0.12);
+    width: 24px; height: 16px; border-radius: 3px; flex: 0 0 auto;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.22);
   }
+
+  /* Custom map pins */
+  .scandic-home-pin, .scandic-pin{ background: none; border: none; }
+  .shp-badge, .sp-badge{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    color: #FFFFFF;
+    background: var(--red);
+    border: 2.5px solid #FFFFFF;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .shp-badge{
+    width: 34px; height: 34px; font-size: 17px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+  }
+  .shp-badge::after{ content: 'S'; transform: rotate(45deg); }
+  .shp-badge{ color: transparent; }
+  .shp-badge::after{ color: #FFFFFF; position: absolute; }
+  .sp-badge{
+    width: 26px; height: 26px; font-size: 13px;
+    background: #F0728A;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+  }
+  .sp-badge::after{ content: 'S'; transform: rotate(45deg); }
+  .sp-badge{ color: transparent; }
+  .sp-badge::after{ color: #FFFFFF; position: absolute; }
+  .chip-scandic{ font-weight: 800; }
+
+  /* Map search */
+  .map-search{ position: relative; display: flex; gap: 7px; margin-bottom: 10px; }
+  .map-search-input{
+    flex: 1 1 auto;
+    min-width: 0;
+    background: #FFFFFF;
+    border: 1.5px solid var(--line);
+    border-radius: 100px;
+    padding: 9px 15px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+  .map-search-input:focus{ outline: none; border-color: var(--red); }
+  .map-search-btn{
+    flex: 0 0 auto;
+    background: var(--red);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 100px;
+    padding: 9px 17px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .search-results{
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.16);
+    padding: 6px;
+    z-index: 30;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+  }
+  .search-results.open{ display: block; }
+  .sr-group{
+    font-family: 'Poppins', sans-serif;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--red);
+    padding: 8px 10px 4px;
+  }
+  .sr-item{
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .sr-item:hover{ background: var(--peach); }
+  .sr-item small{ display: block; color: var(--text-dim); font-size: 11.5px; }
+  .sr-msg{ padding: 10px; font-size: 12.5px; color: var(--text-dim); }
 
   /* Map */
   .map-wrap{ position: relative; }
@@ -279,26 +380,17 @@
     line-height: 1.5;
     color: var(--text-dim);
   }
-  /* Flag-colour backgrounds */
-  .flag-de{ background: linear-gradient(180deg,#000 0 33.33%,#D00 33.33% 66.66%,#FFCE00 66.66% 100%); }
-  .flag-en{ background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2030%27%3E%3CclipPath%20id%3D%27s%27%3E%3Cpath%20d%3D%27M0%2C0%20v30%20h60%20v-30%20z%27/%3E%3C/clipPath%3E%3CclipPath%20id%3D%27t%27%3E%3Cpath%20d%3D%27M30%2C15%20h30%20v15%20z%20v15%20h-30%20z%20h-30%20v-15%20z%20v-15%20h30%20z%27/%3E%3C/clipPath%3E%3Cg%20clip-path%3D%27url%28%23s%29%27%3E%3Cpath%20d%3D%27M0%2C0%20v30%20h60%20v-30%20z%27%20fill%3D%27%23012169%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C30%20M60%2C0%20L0%2C30%27%20stroke%3D%27%23fff%27%20stroke-width%3D%276%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C30%20M60%2C0%20L0%2C30%27%20clip-path%3D%27url%28%23t%29%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%274%27/%3E%3Cpath%20d%3D%27M30%2C0%20v30%20M0%2C15%20h60%27%20stroke%3D%27%23fff%27%20stroke-width%3D%2710%27/%3E%3Cpath%20d%3D%27M30%2C0%20v30%20M0%2C15%20h60%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%276%27/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat; }
-  .flag-es{ background: linear-gradient(180deg,#AA151B 0 25%,#F1BF00 25% 75%,#AA151B 75% 100%); }
-  .flag-sv{
-    background:
-      linear-gradient(#FECC00,#FECC00) center/100% 28% no-repeat,
-      linear-gradient(#FECC00,#FECC00) 32% 0/22% 100% no-repeat,
-      #006AA7;
-  }
-  .flag-no{ background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2022%2016%27%3E%3Crect%20width%3D%2722%27%20height%3D%2716%27%20fill%3D%27%23BA0C2F%27/%3E%3Crect%20x%3D%276%27%20width%3D%274%27%20height%3D%2716%27%20fill%3D%27%23fff%27/%3E%3Crect%20y%3D%276%27%20width%3D%2722%27%20height%3D%274%27%20fill%3D%27%23fff%27/%3E%3Crect%20x%3D%277%27%20width%3D%272%27%20height%3D%2716%27%20fill%3D%27%2300205B%27/%3E%3Crect%20y%3D%277%27%20width%3D%2722%27%20height%3D%272%27%20fill%3D%27%2300205B%27/%3E%3C/svg%3E") center/100% 100% no-repeat; }
-  .flag-fi{
-    background:
-      linear-gradient(#003580,#003580) center/100% 30% no-repeat,
-      linear-gradient(#003580,#003580) 34% 0/26% 100% no-repeat,
-      #FFFFFF;
-  }
-  .flag-pl{ background: linear-gradient(180deg,#FFFFFF 0 50%,#DC143C 50% 100%); }
-  .flag-ru{ background: linear-gradient(180deg,#FFFFFF 0 33.33%,#0039A6 33.33% 66.66%,#D52B1E 66.66% 100%); }
-  .flag-ar{ background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20300%20200%27%3E%3Crect%20width%3D%27300%27%20height%3D%27200%27%20fill%3D%27%23fff%27/%3E%3Crect%20width%3D%27300%27%20height%3D%2750%27%20fill%3D%27%23ED1C24%27/%3E%3Crect%20y%3D%27150%27%20width%3D%27300%27%20height%3D%2750%27%20fill%3D%27%23ED1C24%27/%3E%3Cpath%20fill%3D%27%2300A651%27%20d%3D%27M150%2064%20L134%2092%20L144%2092%20L124%20114%20L140%20114%20L110%20138%20L190%20138%20L160%20114%20L176%20114%20L156%2092%20L166%2092%20Z%27/%3E%3Crect%20x%3D%27145%27%20y%3D%27138%27%20width%3D%2710%27%20height%3D%2712%27%20fill%3D%27%2300A651%27/%3E%3C/svg%3E") center/100% 100% no-repeat; }
+  /* Flags – proportional SVG artwork */
+  [class*='flag-']{ background-repeat: no-repeat; background-position: center; background-size: 100% 100%; }
+  .flag-de{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2713.3333%27%20fill%3D%27%23000000%27/%3E%3Crect%20y%3D%2713.3333%27%20width%3D%2760%27%20height%3D%2713.3333%27%20fill%3D%27%23DD0000%27/%3E%3Crect%20y%3D%2726.6667%27%20width%3D%2760%27%20height%3D%2713.3333%27%20fill%3D%27%23FFCE00%27/%3E%3C/svg%3E"); }
+  .flag-en{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3CclipPath%20id%3D%27ukA%27%3E%3Cpath%20d%3D%27M0%2C0%20v40%20h60%20v-40%20z%27/%3E%3C/clipPath%3E%3CclipPath%20id%3D%27ukB%27%3E%3Cpath%20d%3D%27M30%2C20%20h30%20v20%20z%20v20%20h-30%20z%20h-30%20v-20%20z%20v-20%20h30%20z%27/%3E%3C/clipPath%3E%3Cg%20clip-path%3D%27url%28%23ukA%29%27%3E%3Cpath%20d%3D%27M0%2C0%20v40%20h60%20v-40%20z%27%20fill%3D%27%23012169%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C40%20M60%2C0%20L0%2C40%27%20stroke%3D%27%23FFFFFF%27%20stroke-width%3D%279%27/%3E%3Cpath%20d%3D%27M0%2C0%20L60%2C40%20M60%2C0%20L0%2C40%27%20clip-path%3D%27url%28%23ukB%29%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%275.5%27/%3E%3Cpath%20d%3D%27M30%2C0%20v40%20M0%2C20%20h60%27%20stroke%3D%27%23FFFFFF%27%20stroke-width%3D%2714%27/%3E%3Cpath%20d%3D%27M30%2C0%20v40%20M0%2C20%20h60%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%278.5%27/%3E%3C/g%3E%3C/svg%3E"); }
+  .flag-es{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2740%27%20fill%3D%27%23AA151B%27/%3E%3Crect%20y%3D%2710.0000%27%20width%3D%2760%27%20height%3D%2720.0000%27%20fill%3D%27%23F1BF00%27/%3E%3C/svg%3E"); }
+  .flag-sv{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2740%27%20fill%3D%27%23005293%27/%3E%3Crect%20y%3D%2716.0000%27%20width%3D%2760%27%20height%3D%278.0000%27%20fill%3D%27%23FECB00%27/%3E%3Crect%20x%3D%2718.7500%27%20width%3D%277.5000%27%20height%3D%2740%27%20fill%3D%27%23FECB00%27/%3E%3C/svg%3E"); }
+  .flag-no{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2740%27%20fill%3D%27%23BA0C2F%27/%3E%3Crect%20y%3D%2715.0000%27%20width%3D%2760%27%20height%3D%2710.0000%27%20fill%3D%27%23FFFFFF%27/%3E%3Crect%20x%3D%2716.3620%27%20width%3D%2710.9080%27%20height%3D%2740%27%20fill%3D%27%23FFFFFF%27/%3E%3Crect%20y%3D%2717.5000%27%20width%3D%2760%27%20height%3D%275.0000%27%20fill%3D%27%2300205B%27/%3E%3Crect%20x%3D%2719.0920%27%20width%3D%275.4540%27%20height%3D%2740%27%20fill%3D%27%2300205B%27/%3E%3C/svg%3E"); }
+  .flag-fi{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2740%27%20fill%3D%27%23FFFFFF%27/%3E%3Crect%20y%3D%2714.5440%27%20width%3D%2760%27%20height%3D%2710.9080%27%20fill%3D%27%23003580%27/%3E%3Crect%20x%3D%2716.6680%27%20width%3D%2710.0020%27%20height%3D%2740%27%20fill%3D%27%23003580%27/%3E%3C/svg%3E"); }
+  .flag-pl{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2740%27%20fill%3D%27%23FFFFFF%27/%3E%3Crect%20y%3D%2720.0000%27%20width%3D%2760%27%20height%3D%2720.0000%27%20fill%3D%27%23DC143C%27/%3E%3C/svg%3E"); }
+  .flag-ru{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2740%27%20fill%3D%27%23FFFFFF%27/%3E%3Crect%20y%3D%2713.3333%27%20width%3D%2760%27%20height%3D%2713.3333%27%20fill%3D%27%230039A6%27/%3E%3Crect%20y%3D%2726.6667%27%20width%3D%2760%27%20height%3D%2713.3333%27%20fill%3D%27%23D52B1E%27/%3E%3C/svg%3E"); }
+  .flag-ar{ background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2060%2040%27%3E%3Crect%20width%3D%2760%27%20height%3D%2740%27%20fill%3D%27%23FFFFFF%27/%3E%3Crect%20width%3D%2760%27%20height%3D%2710.0000%27%20fill%3D%27%23ED1C24%27/%3E%3Crect%20y%3D%2730.0000%27%20width%3D%2760%27%20height%3D%2710.0000%27%20fill%3D%27%23ED1C24%27/%3E%3Cpath%20fill%3D%27%2300A651%27%20d%3D%27M30%2013.5%20L26.4%2018.5%20L28.6%2018.5%20L24.6%2022.2%20L27.9%2022.2%20L21.6%2026.5%20L38.4%2026.5%20L32.1%2022.2%20L35.4%2022.2%20L31.4%2018.5%20L33.6%2018.5%20Z%27/%3E%3Crect%20x%3D%2728.9%27%20y%3D%2726.5%27%20width%3D%272.2%27%20height%3D%272.6%27%20fill%3D%27%2300A651%27/%3E%3C/svg%3E"); }
 
   /* Hamburger toggle (in-flow, above first chapter) */
   .menu-row{ padding-bottom: 2px; }
@@ -591,8 +683,13 @@
       <span class="section-num">00</span>
       <h2 class="section-title"><span lang="de">Karte</span><span lang="en">Map</span><span lang="es">Mapa</span><span lang="sv">Karta</span><span lang="no">Kart</span><span lang="fi">Kartta</span><span lang="pl">Mapa</span><span lang="ru">Карта</span><span lang="ar">الخريطة</span></h2>
     </div>
+    <div class="map-search">
+      <input type="search" id="mapSearch" class="map-search-input" placeholder="" autocomplete="off">
+      <div class="search-results" id="searchResults"></div>
+    </div>
     <div class="dist-chips">
       <button class="dist-chip active" data-district="all"><span lang="de">Alle Bezirke</span><span lang="en">All districts</span><span lang="es">Todos los distritos</span><span lang="sv">Alla stadsdelar</span><span lang="no">Alle bydeler</span><span lang="fi">Kaikki kaupunginosat</span><span lang="pl">Wszystkie dzielnice</span><span lang="ru">Все районы</span><span lang="ar">جميع الأحياء</span></button>
+      <button class="dist-chip chip-scandic" data-district="scandic"><i style="background:#CD0822"></i><span lang="de">Scandic Hotels</span><span lang="en">Scandic Hotels</span><span lang="es">Hoteles Scandic</span><span lang="sv">Scandic Hotels</span><span lang="no">Scandic Hotels</span><span lang="fi">Scandic-hotellit</span><span lang="pl">Hotele Scandic</span><span lang="ru">Отели Scandic</span><span lang="ar">فنادق Scandic</span></button>
       <button class="dist-chip" data-district="Charlottenburg"><i style="background:#00838F"></i>Charlottenburg</button>
       <button class="dist-chip" data-district="Friedrichshain"><i style="background:#6A1B9A"></i>Friedrichshain</button>
       <button class="dist-chip" data-district="Kreuzberg"><i style="background:#1565C0"></i>Kreuzberg</button>
@@ -1388,9 +1485,43 @@
       attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    L.circleMarker(HOTEL, {
-      radius: 9, color: '#2B2420', weight: 3, fillColor: '#FFFFFF', fillOpacity: 1
-    }).addTo(map).bindPopup('<b>Scandic Berlin Potsdamer Platz</b>');
+    var HOTELS = [{"n": "Scandic Berlin Potsdamer Platz", "c": "Berlin", "la": 52.5047089, "lo": 13.3750371, "pid": "ChIJITKLYMtRqEcRue5yPfAvvf0", "home": true, "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Berlin+Potsdamer+Platz&query_place_id=ChIJITKLYMtRqEcRue5yPfAvvf0"}, {"n": "Scandic Berlin Kurfürstendamm", "c": "Berlin", "la": 52.5000619, "lo": 13.3382987, "pid": "ChIJCT2tXlZQqEcRTnHMovTVIeM", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Berlin+Kurfürstendamm&query_place_id=ChIJCT2tXlZQqEcRTnHMovTVIeM"}, {"n": "Scandic Berlin Charlottenburg", "c": "Berlin", "la": 52.499549, "lo": 13.321511, "pid": "ChIJx7APk_pQqEcRduS36ioFqhA", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Berlin+Charlottenburg&query_place_id=ChIJx7APk_pQqEcRduS36ioFqhA"}, {"n": "Scandic Frankfurt Museumsufer", "c": "Frankfurt", "la": 50.1049053, "lo": 8.668192, "pid": "ChIJ-z8HTgAMvUcRkRRVmIGwp1s", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Frankfurt+Museumsufer&query_place_id=ChIJ-z8HTgAMvUcRkRRVmIGwp1s"}, {"n": "Scandic Frankfurt Hafenpark", "c": "Frankfurt", "la": 50.108924, "lo": 8.7066171, "pid": "ChIJd5uvqpwOvUcRsir1nOSR5_o", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Frankfurt+Hafenpark&query_place_id=ChIJd5uvqpwOvUcRsir1nOSR5_o"}, {"n": "Scandic Hamburg Emporio", "c": "Hamburg", "la": 53.5558831, "lo": 9.9819454, "pid": "ChIJ-WOLVBaPsUcRB5DasSRG7-U", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Hamburg+Emporio&query_place_id=ChIJ-WOLVBaPsUcRB5DasSRG7-U"}, {"n": "Scandic München Macherei", "c": "München", "la": 48.1297039, "lo": 11.624454, "pid": "ChIJH077rb11nkcRL4boe4o-Afs", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+München+Macherei&query_place_id=ChIJH077rb11nkcRL4boe4o-Afs"}, {"n": "Scandic Nürnberg Central", "c": "Nürnberg", "la": 49.4464862, "lo": 11.0780087, "pid": "ChIJaUa_0odXn0cRQ6EfA_vl6Bc", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Nürnberg+Central&query_place_id=ChIJaUa_0odXn0cRQ6EfA_vl6Bc"}, {"n": "Scandic Stuttgart Europaviertel", "c": "Stuttgart", "la": 48.7933347, "lo": 9.1821193, "pid": "ChIJjw3U2yvbmUcR-KWQZJ1Wc_E", "maps": "https://www.google.com/maps/search/?api=1&query=Scandic+Stuttgart+Europaviertel&query_place_id=ChIJjw3U2yvbmUcR-KWQZJ1Wc_E"}];
+    var HERE = {"de": "Ihr Hotel", "en": "Your hotel", "es": "Su hotel", "sv": "Ditt hotell", "no": "Ditt hotell", "fi": "Hotellisi", "pl": "Twój hotel", "ru": "Ваш отель", "ar": "فندقك"};
+    function hlang(){
+      var c = document.body.className.split(' ').find(function(x){ return x.indexOf('lang-') === 0; });
+      return c ? c.replace('lang-','') : 'de';
+    }
+
+    // Nice pin for the current hotel
+    var homeIcon = L.divIcon({
+      className: 'scandic-home-pin',
+      html: '<span class="shp-badge">S</span>',
+      iconSize: [34, 42],
+      iconAnchor: [17, 42],
+      popupAnchor: [0, -38]
+    });
+    var home = HOTELS.filter(function(h){ return h.home; })[0];
+    L.marker([home.la, home.lo], { icon: homeIcon, zIndexOffset: 1000 }).addTo(map)
+      .bindPopup(function(){
+        return '<b>' + home.n + '</b><br><span style="color:#CD0822;font-weight:700">' + (HERE[hlang()]||HERE.de) + '</span>' +
+               '<br><a class="popup-goto" href="' + home.maps + '" target="_blank" rel="noopener">Google Maps</a>';
+      });
+
+    var scandicIcon = L.divIcon({
+      className: 'scandic-pin',
+      html: '<span class="sp-badge">S</span>',
+      iconSize: [26, 33],
+      iconAnchor: [13, 33],
+      popupAnchor: [0, -30]
+    });
+    function scandicPopup(h){
+      return '<b>' + h.n + '</b><br><span style="color:#7A6F63">' + h.c + '</span>' +
+             '<br><a class="popup-goto" href="' + h.maps + '" target="_blank" rel="noopener">Google Maps</a>';
+    }
+    // All other Scandic hotels are shown on the map by default
+    HOTELS.filter(function(h){ return !h.home; }).forEach(function(h){
+      L.marker([h.la, h.lo], { icon: scandicIcon, zIndexOffset: 800 }).addTo(map).bindPopup(scandicPopup(h));
+    });
 
     var COLORS = {"Mitte": "#CD0822", "Tiergarten": "#2E7D32", "Kreuzberg": "#1565C0", "Schöneberg": "#EF6C00", "Friedrichshain": "#6A1B9A", "Charlottenburg": "#00838F", "Tempelhof": "#AD1457"};
     var POINTS = [{"n": "Schloss Charlottenburg", "la": 52.5209319, "lo": 13.2956165, "d": "Charlottenburg", "s": "schloss-charlottenburg"}, {"n": "Berghain / Panorama Bar", "la": 52.5110691, "lo": 13.4429945, "d": "Friedrichshain", "s": "berghain-panorama-bar"}, {"n": "Club der Visionaere", "la": 52.4967903, "lo": 13.4504597, "d": "Friedrichshain", "s": "club-der-visionaere"}, {"n": "East Side Gallery", "la": 52.5050224, "lo": 13.4396953, "d": "Friedrichshain", "s": "east-side-gallery"}, {"n": "Coffee and Cookies", "la": 52.5061066, "lo": 13.37995, "d": "Kreuzberg", "s": "coffee-and-cookies"}, {"n": "Galander Kreuzberg Cocktailbar", "la": 52.4918912, "lo": 13.3831997, "d": "Kreuzberg", "s": "galander-kreuzberg-cocktailbar"}, {"n": "Gretchen", "la": 52.4960025, "lo": 13.3876896, "d": "Kreuzberg", "s": "gretchen"}, {"n": "Kinderbauernhof Am Mauerplatz", "la": 52.5048141, "lo": 13.4206132, "d": "Kreuzberg", "s": "kinderbauernhof-am-mauerplatz"}, {"n": "Kindercafé Kreuzzwerg", "la": 52.4937334, "lo": 13.3819271, "d": "Kreuzberg", "s": "kindercafe-kreuzzwerg"}, {"n": "LIMONADIER Cocktailbar", "la": 52.4918236, "lo": 13.3904969, "d": "Kreuzberg", "s": "limonadier-cocktailbar"}, {"n": "La Maison Berlin", "la": 52.4933315, "lo": 13.4310939, "d": "Kreuzberg", "s": "la-maison-berlin"}, {"n": "Pandoras", "la": 52.4962747, "lo": 13.3960323, "d": "Kreuzberg", "s": "pandoras"}, {"n": "RedRum Art Bar", "la": 52.493816, "lo": 13.4151044, "d": "Kreuzberg", "s": "redrum-art-bar"}, {"n": "Ritter Butzke", "la": 52.5028492, "lo": 13.4078816, "d": "Kreuzberg", "s": "ritter-butzke"}, {"n": "Science Center Spectrum", "la": 52.4981015, "lo": 13.3793303, "d": "Kreuzberg", "s": "science-center-spectrum"}, {"n": "The Gibson Bar", "la": 52.5057254, "lo": 13.380306, "d": "Kreuzberg", "s": "the-gibson-bar"}, {"n": "AMRIT", "la": 52.5105, "lo": 13.37717, "d": "Mitte", "s": "amrit"}, {"n": "Brammibal's Donuts", "la": 52.50794, "lo": 13.3736575, "d": "Mitte", "s": "brammibal-s-donuts"}, {"n": "Brandenburger Tor", "la": 52.5162746, "lo": 13.377704, "d": "Mitte", "s": "brandenburger-tor"}, {"n": "Café LebensArt", "la": 52.5120135, "lo": 13.3767014, "d": "Mitte", "s": "cafe-lebensart"}, {"n": "CinemaxX Potsdamer Platz", "la": 52.508988, "lo": 13.373469, "d": "Mitte", "s": "cinemaxx-potsdamer-platz"}, {"n": "Cutes Berlin", "la": 52.5128476, "lo": 13.4029332, "d": "Mitte", "s": "cutes-berlin"}, {"n": "DDR Museum", "la": 52.5192243, "lo": 13.402637, "d": "Mitte", "s": "ddr-museum"}, {"n": "Fernsehturm Berlin", "la": 52.520815, "lo": 13.409419, "d": "Mitte", "s": "fernsehturm-berlin"}, {"n": "Gedenkstätte Berliner Mauer", "la": 52.5350521, "lo": 13.3901898, "d": "Mitte", "s": "gedenkstatte-berliner-mauer"}, {"n": "House of Weekend", "la": 52.5229352, "lo": 13.4163463, "d": "Mitte", "s": "house-of-weekend"}, {"n": "LEGOLAND Discovery Centre", "la": 52.5097515, "lo": 13.3722786, "d": "Mitte", "s": "legoland-discovery-centre"}, {"n": "Maxim", "la": 52.5088539, "lo": 13.375651, "d": "Mitte", "s": "maxim"}, {"n": "Museum für Naturkunde", "la": 52.5305726, "lo": 13.3791755, "d": "Mitte", "s": "museum-fur-naturkunde"}, {"n": "Museumsinsel", "la": 52.5169328, "lo": 13.4018996, "d": "Mitte", "s": "museumsinsel"}, {"n": "Paulaner Wirtshaus", "la": 52.5084465, "lo": 13.3751769, "d": "Mitte", "s": "paulaner-wirtshaus"}, {"n": "Posh Bar", "la": 52.5086604, "lo": 13.3729704, "d": "Mitte", "s": "posh-bar"}, {"n": "QIU – Bar & Restaurant", "la": 52.5090548, "lo": 13.3739018, "d": "Mitte", "s": "qiu-bar-restaurant"}, {"n": "Reederei Bruno Winkler", "la": 52.52112, "lo": 13.3868048, "d": "Mitte", "s": "reederei-bruno-winkler"}, {"n": "Reederei Hadynski e.Kfr.", "la": 52.5203386, "lo": 13.4011794, "d": "Mitte", "s": "reederei-hadynski-e-kfr"}, {"n": "Reichstagsgebäude", "la": 52.5186202, "lo": 13.3761871, "d": "Mitte", "s": "reichstagsgebaude"}, {"n": "SEA LIFE Berlin", "la": 52.5202804, "lo": 13.4041219, "d": "Mitte", "s": "sea-life-berlin"}, {"n": "Saravanaa Bhavan", "la": 52.5102399, "lo": 13.3760893, "d": "Mitte", "s": "saravanaa-bhavan"}, {"n": "The Alchemist", "la": 52.5073896, "lo": 13.3747959, "d": "Mitte", "s": "the-alchemist"}, {"n": "The Barn Café", "la": 52.5084071, "lo": 13.3746093, "d": "Mitte", "s": "the-barn-cafe"}, {"n": "The Curtain Club", "la": 52.510173, "lo": 13.375372, "d": "Mitte", "s": "the-curtain-club"}, {"n": "Viet Bowl", "la": 52.5068003, "lo": 13.37231, "d": "Mitte", "s": "viet-bowl"}, {"n": "essenza", "la": 52.5090992, "lo": 13.3753381, "d": "Mitte", "s": "essenza"}, {"n": "Café Komine", "la": 52.4978438, "lo": 13.3417035, "d": "Schöneberg", "s": "cafe-komine"}, {"n": "Kiddies Kindercafé", "la": 52.5019781, "lo": 13.3494267, "d": "Schöneberg", "s": "kiddies-kindercafe"}, {"n": "Masaya", "la": 52.4979681, "lo": 13.3568438, "d": "Schöneberg", "s": "masaya"}, {"n": "Rüyam Gemüse Kebab", "la": 52.484503, "lo": 13.3523488, "d": "Schöneberg", "s": "ruyam-gemuse-kebab"}, {"n": "Sissi Restaurant", "la": 52.4975787, "lo": 13.3467751, "d": "Schöneberg", "s": "sissi-restaurant"}, {"n": "White Lounge Shisha", "la": 52.4932414, "lo": 13.3663456, "d": "Schöneberg", "s": "white-lounge-shisha"}, {"n": "Tempelhofer Feld", "la": 52.4748569, "lo": 13.4005926, "d": "Tempelhof", "s": "tempelhofer-feld"}, {"n": "Aquarium Berlin", "la": 52.5060173, "lo": 13.3410226, "d": "Tiergarten", "s": "aquarium-berlin"}, {"n": "Sommerkino am Potsdamer Platz", "la": 52.5090057, "lo": 13.3672576, "d": "Tiergarten", "s": "sommerkino-am-potsdamer-platz"}, {"n": "Spielplatz Großer Tiergarten", "la": 52.5164557, "lo": 13.3583821, "d": "Tiergarten", "s": "spielplatz-gro-er-tiergarten"}, {"n": "Spielplatz Luiseninsel (Tiergarten)", "la": 52.5108717, "lo": 13.3666756, "d": "Tiergarten", "s": "spielplatz-luiseninsel-tiergarten"}, {"n": "Tiergarten", "la": 52.5141516, "lo": 13.3591634, "d": "Tiergarten", "s": "tiergarten"}, {"n": "Zoologischer Garten Berlin", "la": 52.5078303, "lo": 13.3394157, "d": "Tiergarten", "s": "zoologischer-garten-berlin"}];
@@ -1412,6 +1543,7 @@
                '<br><a class="popup-goto" href="#place-' + p.s + '">' + label + '</a>';
       });
       m._district = p.d;
+      m._slug = p.s;
       markers.push(m);
     });
 
@@ -1420,6 +1552,11 @@
         document.querySelectorAll('.dist-chip').forEach(function(c){ c.classList.remove('active'); });
         chip.classList.add('active');
         var d = chip.dataset.district;
+        if(d === 'scandic'){
+          var pts = HOTELS.map(function(h){ return [h.la, h.lo]; });
+          map.fitBounds(L.latLngBounds(pts).pad(0.2));
+          return;
+        }
         var shown = [];
         markers.forEach(function(m){
           if(d === 'all' || m._district === d){
@@ -1433,6 +1570,76 @@
           map.fitBounds(L.latLngBounds(shown).pad(0.25));
         }
       });
+    });
+
+    // ---- Search within the guide entries ----
+    var LBL = {"ph": {"de": "Eintrag suchen…", "en": "Search an entry…", "es": "Buscar una ficha…", "sv": "Sök en post…", "no": "Søk en oppføring…", "fi": "Hae kohdetta…", "pl": "Szukaj wpisu…", "ru": "Поиск записи…", "ar": "ابحث عن إدخال…"}, "none": {"de": "Keine Treffer", "en": "No results", "es": "Sin resultados", "sv": "Inga träffar", "no": "Ingen treff", "fi": "Ei tuloksia", "pl": "Brak wyników", "ru": "Ничего не найдено", "ar": "لا توجد نتائج"}};
+    var input = document.getElementById('mapSearch');
+    var results = document.getElementById('searchResults');
+
+    function curLang(){
+      var c = document.body.className.split(' ').find(function(x){ return x.indexOf('lang-') === 0; });
+      return c ? c.replace('lang-','') : 'de';
+    }
+    function t(key){ var d = LBL[key]; return d[curLang()] || d.de; }
+    function setPlaceholder(){ input.placeholder = t('ph'); }
+    setPlaceholder();
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.addEventListener('click', function(){ setTimeout(setPlaceholder, 0); });
+    });
+
+    function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+    function closeResults(){ results.classList.remove('open'); }
+    document.addEventListener('click', function(e){
+      if(!results.contains(e.target) && e.target !== input) closeResults();
+    });
+
+    function rank(p, n){
+      // Only entries whose name begins with what was typed (districts have their own filter chips)
+      return norm(p.n).indexOf(n) === 0 ? 0 : -1;
+    }
+
+    function renderResults(q){
+      var n = norm(q);
+      var hits = POINTS.map(function(p){ return { p: p, r: rank(p, n) }; })
+        .filter(function(x){ return x.r !== -1; })
+        .sort(function(a, b){
+          if(a.r !== b.r) return a.r - b.r;
+          return a.p.n.localeCompare(b.p.n);
+        })
+        .slice(0, 12)
+        .map(function(x){ return x.p; });
+      var html = '';
+      if(hits.length){
+        hits.forEach(function(p){
+          html += '<button class="sr-item" data-lat="' + p.la + '" data-lon="' + p.lo +
+                  '" data-slug="' + p.s + '"><b>' + p.n + '</b><small>' + p.d + '</small></button>';
+        });
+      } else {
+        html = '<div class="sr-msg">' + t('none') + '</div>';
+      }
+      results.innerHTML = html;
+      results.classList.add('open');
+    }
+
+    input.addEventListener('input', function(){
+      var q = input.value.trim();
+      if(q.length < 1){ closeResults(); return; }
+      renderResults(q);
+    });
+    input.addEventListener('focus', function(){
+      if(input.value.trim().length >= 1) renderResults(input.value.trim());
+    });
+
+    results.addEventListener('click', function(e){
+      var item = e.target.closest('.sr-item');
+      if(!item) return;
+      var lat = parseFloat(item.dataset.lat), lon = parseFloat(item.dataset.lon);
+      var mk = markers.find(function(m){ return m._slug === item.dataset.slug; });
+      if(mk && !map.hasLayer(mk)) mk.addTo(map);
+      map.setView([lat, lon], 16, { animate: true });
+      if(mk) setTimeout(function(){ mk.openPopup(); }, 350);
+      closeResults();
     });
 
     // Enlarge / shrink the map
